@@ -18,7 +18,7 @@ const projectData = [
 
 // ====== API BASE URL CONFIGURATION ======
 // Set your Render backend URL here:
-const RENDER_BACKEND_URL = "https://your-backend.onrender.com"; // <-- CHANGE THIS to your actual Render backend URL
+const RENDER_BACKEND_URL = "https://yantrika-rh7d.onrender.com"; // <-- ACTUAL Render backend URL
 
 // Dynamically determine API base URL
 const API_BASE_URL =
