@@ -20,11 +20,8 @@ const projectData = [
 // Set your Render backend URL here:
 const RENDER_BACKEND_URL = "https://yantrika-rh7d.onrender.com"; // <-- ACTUAL Render backend URL
 
-// Dynamically determine API base URL
-const API_BASE_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:5000"
-    : RENDER_BACKEND_URL;
+// Always use Render backend for API calls
+const API_BASE_URL = RENDER_BACKEND_URL;
 // ====== END API BASE URL CONFIGURATION ======
 
 // Modal helpers
