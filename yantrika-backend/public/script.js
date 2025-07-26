@@ -216,6 +216,12 @@ document.addEventListener("DOMContentLoaded", () => {
     loadUpcomingEvents();
     loadPastEvents();
   }
+
+  // Dynamically set contact form endpoint
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.dataset.endpoint = `${API_BASE_URL}/api/contact`;
+  }
 });
 
 // Load team members for team.html page - ONLY REAL DATA FROM BACKEND
