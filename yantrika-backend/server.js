@@ -7,14 +7,17 @@ const TeamMember = require('./models/TeamMember');
 const CommitteeMember = require('./models/CommitteeMember'); 
 const UpcomingEvent = require('./models/UpcomingEvent');
 const PastEvent    = require('./models/PastEvent');
-const nodemailer = require('nodemailer');         // Optional: email notifications
-const Message     = require('./models/Message');  // ← import your new model
-
-
+const nodemailer = require('nodemailer');
+const Message     = require('./models/Message');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// ——— Basic "/" Route ——————————————————————————
+app.get('/', (req, res) => {
+  res.send('✅ Yantrika backend is running!');
+});
 
 // ——— CONNECT TO MONGO —————————————————————————
 mongoose.connect(process.env.MONGO_URI, {
@@ -26,7 +29,6 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // ——— TEAM MEMBER ROUTES —————————————————————————
 
-// GET all team members
 app.get('/api/team', async (req, res) => {
   try {
     const members = await TeamMember.find().sort({ createdAt: 1 });
@@ -36,7 +38,6 @@ app.get('/api/team', async (req, res) => {
   }
 });
 
-// POST a new team member
 app.post('/api/team', async (req, res) => {
   try {
     const member = new TeamMember(req.body);
@@ -47,7 +48,6 @@ app.post('/api/team', async (req, res) => {
   }
 });
 
-// PUT (update) a team member
 app.put('/api/team/:id', async (req, res) => {
   try {
     const updated = await TeamMember.findByIdAndUpdate(
@@ -61,7 +61,6 @@ app.put('/api/team/:id', async (req, res) => {
   }
 });
 
-// DELETE a team member
 app.delete('/api/team/:id', async (req, res) => {
   try {
     await TeamMember.findByIdAndDelete(req.params.id);
@@ -73,7 +72,6 @@ app.delete('/api/team/:id', async (req, res) => {
 
 // ——— COMMITTEE MEMBER ROUTES —————————————————————————
 
-// GET all committee members
 app.get('/api/committee', async (req, res) => {
   try {
     const members = await CommitteeMember.find().sort({ createdAt: 1 });
@@ -83,7 +81,6 @@ app.get('/api/committee', async (req, res) => {
   }
 });
 
-// POST a new committee member
 app.post('/api/committee', async (req, res) => {
   try {
     const newMember = new CommitteeMember(req.body);
@@ -94,7 +91,6 @@ app.post('/api/committee', async (req, res) => {
   }
 });
 
-// PUT (update) a committee member
 app.put('/api/committee/:id', async (req, res) => {
   try {
     const updated = await CommitteeMember.findByIdAndUpdate(
@@ -108,7 +104,6 @@ app.put('/api/committee/:id', async (req, res) => {
   }
 });
 
-// DELETE a committee member
 app.delete('/api/committee/:id', async (req, res) => {
   try {
     await CommitteeMember.findByIdAndDelete(req.params.id);
@@ -118,17 +113,14 @@ app.delete('/api/committee/:id', async (req, res) => {
   }
 });
 
-
 // ——————————————————————————
 //  Upcoming Events Endpoints
 // ——————————————————————————
 app.get('/api/upcoming-events', async (req, res) => {
   try {
-    // 1. Compute midnight today in server local time (or UTC)
     const startOfToday = new Date();
     startOfToday.setHours(0, 0, 0, 0);
 
-    // 2. Query for date >= start‑of‑today
     const events = await UpcomingEvent
       .find({ date: { $gte: startOfToday }, status: 'open' })
       .sort({ date: 1 });
@@ -139,7 +131,6 @@ app.get('/api/upcoming-events', async (req, res) => {
   }
 });
 
-
 app.post('/api/upcoming-events', async (req, res) => {
   try {
     const ev = new UpcomingEvent(req.body);
@@ -149,8 +140,6 @@ app.post('/api/upcoming-events', async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
-
-// (You can add PUT / DELETE similarly…)
 
 // ——————————————————————————
 //    Past Events Endpoints
@@ -176,23 +165,16 @@ app.post('/api/past-events', async (req, res) => {
   }
 });
 
-
 // ——————————————————————————
 //  Contact Form Endpoints
 // ——————————————————————————
 
-/**
- * POST /api/contact
- * Receives a message, saves to MongoDB, and optionally emails ADMIN_EMAIL.
- */
 app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
 
-    // 1) persist in DB
     const saved = await Message.create({ name, email, subject, message });
 
-    // 2) optional: email notification to ADMIN_EMAIL
     if (process.env.SMTP_HOST && process.env.ADMIN_EMAIL) {
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
@@ -225,11 +207,6 @@ ${message}
   }
 });
 
-/**
- * GET /api/messages
- * Returns all messages, newest first.
- * Protected by X-ADMIN-KEY header.
- */
 app.get('/api/messages', async (req, res) => {
   const key = req.headers['x-admin-key'];
   if (!key || key !== process.env.ADMIN_KEY) {
@@ -244,7 +221,6 @@ app.get('/api/messages', async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
-
 
 // ——— START SERVER —————————————————————————
 const PORT = process.env.PORT || 5000;
