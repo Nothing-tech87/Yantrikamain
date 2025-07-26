@@ -1,21 +1,27 @@
 require('dotenv').config();
-const express  = require('express');
+const express = require('express');
 const mongoose = require('mongoose');
-const cors     = require('cors');
+const cors = require('cors');
+const path = require('path');
 
 const TeamMember = require('./models/TeamMember');
-const CommitteeMember = require('./models/CommitteeMember'); 
+const CommitteeMember = require('./models/CommitteeMember');
 const UpcomingEvent = require('./models/UpcomingEvent');
-const PastEvent    = require('./models/PastEvent');
+const PastEvent = require('./models/PastEvent');
+const Message = require('./models/Message');
 const nodemailer = require('nodemailer');
-const Message     = require('./models/Message');
 
 const app = express();
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, 'public')));
+
 // ——— Basic "/" Route ——————————————————————————
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('✅ Yantrika backend is running!');
 });
 
@@ -28,7 +34,6 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch(err => console.error('❌ MongoDB error:', err));
 
 // ——— TEAM MEMBER ROUTES —————————————————————————
-
 app.get('/api/team', async (req, res) => {
   try {
     const members = await TeamMember.find().sort({ createdAt: 1 });
@@ -50,11 +55,7 @@ app.post('/api/team', async (req, res) => {
 
 app.put('/api/team/:id', async (req, res) => {
   try {
-    const updated = await TeamMember.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const updated = await TeamMember.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updated);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -71,7 +72,6 @@ app.delete('/api/team/:id', async (req, res) => {
 });
 
 // ——— COMMITTEE MEMBER ROUTES —————————————————————————
-
 app.get('/api/committee', async (req, res) => {
   try {
     const members = await CommitteeMember.find().sort({ createdAt: 1 });
@@ -93,11 +93,7 @@ app.post('/api/committee', async (req, res) => {
 
 app.put('/api/committee/:id', async (req, res) => {
   try {
-    const updated = await CommitteeMember.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const updated = await CommitteeMember.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updated);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -113,9 +109,7 @@ app.delete('/api/committee/:id', async (req, res) => {
   }
 });
 
-// ——————————————————————————
-//  Upcoming Events Endpoints
-// ——————————————————————————
+// ——— UPCOMING EVENTS —————————————————————————
 app.get('/api/upcoming-events', async (req, res) => {
   try {
     const startOfToday = new Date();
@@ -141,14 +135,10 @@ app.post('/api/upcoming-events', async (req, res) => {
   }
 });
 
-// ——————————————————————————
-//    Past Events Endpoints
-// ——————————————————————————
+// ——— PAST EVENTS —————————————————————————
 app.get('/api/past-events', async (req, res) => {
   try {
-    const events = await PastEvent
-      .find()
-      .sort({ date: -1 });
+    const events = await PastEvent.find().sort({ date: -1 });
     res.json(events);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -165,14 +155,10 @@ app.post('/api/past-events', async (req, res) => {
   }
 });
 
-// ——————————————————————————
-//  Contact Form Endpoints
-// ——————————————————————————
-
+// ——— CONTACT FORM —————————————————————————
 app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
-
     const saved = await Message.create({ name, email, subject, message });
 
     if (process.env.SMTP_HOST && process.env.ADMIN_EMAIL) {
@@ -185,15 +171,12 @@ app.post('/api/contact', async (req, res) => {
           pass: process.env.SMTP_PASS
         }
       });
+
       await transporter.sendMail({
         from: `"Yantrika Site" <${process.env.SMTP_USER}>`,
         to: process.env.ADMIN_EMAIL,
         subject: `📬 New message: ${subject}`,
-        text: `
-You’ve got a new message from ${name} <${email}>:
-
-${message}
-        `
+        text: `You’ve got a new message from ${name} <${email}>:\n\n${message}`
       });
     }
 
@@ -207,6 +190,7 @@ ${message}
   }
 });
 
+// ——— FETCH MESSAGES (Protected) —————————————————————————
 app.get('/api/messages', async (req, res) => {
   const key = req.headers['x-admin-key'];
   if (!key || key !== process.env.ADMIN_KEY) {
@@ -220,6 +204,11 @@ app.get('/api/messages', async (req, res) => {
     console.error('Fetch messages error:', err);
     res.status(500).json({ error: 'Server error' });
   }
+});
+
+// ——— Serve frontend for all unmatched routes ——————————————————
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // ——— START SERVER —————————————————————————
