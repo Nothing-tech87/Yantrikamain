@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yantrika - College Robotics Club</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="Yan.png" alt="Yantrika Logo" />
+      <span><strong>YANTRIKA</strong></span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <!-- <li><a href="join.html">Join & Contact</a></li> -->
+        <li><a href="contact.html">Join & Contact</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+    </nav>
+    <a href="join.html" class="start-btn"><i class="fas fa-rocket"></i> Join Now</a>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Building the <span class="highlight">Future</span> with Robotics<span class="dot">.</span></h1>
+      <p>Yantrika is where innovation meets engineering. Join our community of passionate roboticists creating tomorrow's technology today.</p>
+      <div class="cta-buttons">
+        <a href="join.html" class="btn filled">Join Our Club</a>
+        <button class="video-btn" onclick="openVideoModal()"><i class="fas fa-play"></i> Watch Demo</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="Yan.png" alt="Robotics Innovation" />
+    </div>
+  </section>
+
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeVideoModal()">&times;</span>
+      <p>Robotics demonstration video will be embedded here.</p>
+    </div>
+  </div>
+<!-- 
+
+
+  <!-- What We Offer Section -->
+  <section class="services" id="services">
+    <div class="section-header center">
+      <span class="section-subtitle">Opportunities</span>
+      <h2>What We Offer</h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="hover-card service-card">
+        <h3 class="hover-content">Hands-on Learning</h3>
+        <p>Work on real robotics projects and gain practical experience with cutting-edge technology.</p>
+        <a href="about.html" class="know-more"><span class="dot"></span> Learn More</a>
+      </div>
+
+      <div class="hover-card service-card">
+        <h3 class="hover-content">Competitions</h3>
+        <p>Participate in national and international robotics competitions and showcase your skills.</p>
+        <a href="events.html" class="know-more"><span class="dot"></span> Learn More</a>
+      </div>
+
+      <div class="hover-card service-card">
+        <h3 class="hover-content">Workshops & Training</h3>
+        <p>Regular workshops on AI, machine learning, embedded systems, and robotics fundamentals.</p>
+        <a href="events.html" class="know-more"><span class="dot"></span> Learn More</a>
+      </div>
+
+      <div class="hover-card service-card">
+        <h3 class="hover-content">Industry Connections</h3>
+        <p>Network with industry professionals and explore career opportunities in robotics and automation.</p>
+        <a href="contact.html" class="know-more"><span class="dot"></span> Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="testimonials" id="achievements">
+    <div class="section-header center">
+      <span class="section-subtitle">Recognition</span>
+      <h2>Our Achievements</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <h3>🏆 National Robotics Championship</h3>
+        <p>First place in the National Robotics Championship 2024 for our autonomous navigation system.</p>
+        <div class="testimonial-user">
+          <div class="achievement-icon">🥇</div>
+          <div>
+            <span>2024</span>
+            <p>National Level</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <h3>🚀 Innovation Award</h3>
+        <p>Best Innovation Award at the Inter-College Tech Fest for our swarm robotics project.</p>
+        <div class="testimonial-user">
+          <div class="achievement-icon">💡</div>
+          <div>
+            <span>2024</span>
+            <p>State Level</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <h3>🤖 AI Excellence</h3>
+        <p>Recognition for outstanding contribution to AI and robotics research at the university level.</p>
+        <div class="testimonial-user">
+          <div class="achievement-icon">🎯</div>
+          <div>
+            <span>2023</span>
+            <p>University Level</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Updates Section -->
+  <section class="blog" id="updates">
+    <div class="section-header center">
+      <span class="section-subtitle">Updates</span>
+      <h2>Latest News</h2>
+    </div>
+
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="/placeholder.svg?height=200&width=300" alt="Workshop">
+        <span class="blog-date">January 15, 2025</span>
+        <h3 class="blog-title">AI & Machine Learning Workshop</h3>
+        <p class="blog-desc">Join us for an intensive workshop on implementing AI algorithms in robotics systems.</p>
+        <a href="events.html" class="read-more"><span class="dot"></span>Read More</a>
+      </div>
+
+      <div class="blog-card">
+        <img src="/placeholder.svg?height=200&width=300" alt="Competition">
+        <span class="blog-date">January 10, 2025</span>
+        <h3 class="blog-title">Upcoming Robotics Competition</h3>
+        <p class="blog-desc">Prepare for the upcoming inter-college robotics competition. Registration now open!</p>
+        <a href="events.html" class="read-more"><span class="dot"></span>Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <h2 class="footer-logo"><span class="dot"></span> YANTRIKA <span class="dot"></span></h2>
+        <p>Empowering the next generation of roboticists and innovators. Join us in building the future through cutting-edge robotics and AI technology.</p>
+        <div class="subscribe">
+          <hr />
+          <a href="join.html" class="subscribe-link"><span class="dot"></span> Join Our Club</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <p>Engineering Department<br>
+          College Campus, Room 204</p>
+        <p>Email: yantrika@college.edu</p>
+        <p>Phone: +91 98765 43210</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

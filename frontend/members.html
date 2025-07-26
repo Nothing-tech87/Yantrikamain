@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Members | Yantrika</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="navbar">
+  <div class="logo">
+    <img src="Yan.png" alt="Yantrika Logo" />
+    <span><strong>YANTRIKA</strong></span>
+  </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html"class="active">Team</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <!-- <li><a href="join.html">Join & Contact</a></li> -->
+        <li><a href="contact.html">Join & Contact</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+    </nav>
+  <a href="contact.html" class="start-btn"><i class="fas fa-rocket"></i> Join Now</a>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>All <span class="highlight">Members</span><span class="dot">.</span></h1>
+    <p>Discover the full list of Yantrika's dedicated members across all years and departments.</p>
+  </div>
+</section>
+
+<section class="services">
+  <div class="section-header center">
+    <span class="section-subtitle">Our Community</span>
+    <h2>Club Members Directory</h2>
+  </div>
+
+  <div class="gallery-filters members-year-tabs center">
+    <button class="filter-btn year-tab active" data-year="all">All Members</button>
+    <button class="filter-btn year-tab" data-year="First Year">First Year</button>
+    <button class="filter-btn year-tab" data-year="Second Year">Second Year</button>
+    <button class="filter-btn year-tab" data-year="Third Year">Third Year</button>
+    <button class="filter-btn year-tab" data-year="BE">BE</button>
+  </div>
+
+  <div id="members-list-container" class="members-table-container">
+    <table class="members-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Department</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody id="members-table-body">
+        <!-- Member rows will be injected by script.js or can be statically added here -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-column">
+      <h2 class="footer-logo"><span class="dot"></span> YANTRIKA <span class="dot"></span></h2>
+      <p>Empowering the next generation of roboticists and innovators.</p>
+      <div class="subscribe">
+        <hr />
+        <a href="contact.html" class="subscribe-link"><span class="dot"></span> Join Our Club</a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h3>Contact Info</h3>
+      <p>Engineering Department<br>College Campus, Room 204</p>
+      <p>Email: yantrika@college.edu</p>
+      <p>Phone: +91 98765 43210</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

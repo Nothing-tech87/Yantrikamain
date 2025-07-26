@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join Us & Contact - Yantrika Robotics Club</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="Yan.png" alt="Yantrika Logo" />
+      <span><strong>YANTRIKA</strong></span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <!-- <li><a href="join.html">Join & Contact</a></li> -->
+        <li><a href="contact.html"class="active">Join & Contact</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+    </nav>
+    <a href="#join-form" class="start-btn"><i class="fas fa-rocket"></i> Join Now</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Get in <span class="highlight">Touch</span><span class="dot">.</span></h1>
+      <p>Ready to join our robotics community or have questions about our projects? We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Introduction -->
+  <section class="services">
+    <div class="section-header center">
+      <span class="section-subtitle">Connect</span>
+      <h2>Let's Start a Conversation</h2>
+      <div class="contact-intro">
+        <p>Whether you're interested in joining our team, collaborating on projects, or simply want to learn more about robotics, we're here to help. Reach out to us for:</p>
+        <div class="contact-reasons">
+          <div class="reason-item">
+            <i class="fas fa-users"></i>
+            <span>Membership Inquiries</span>
+          </div>
+          <div class="reason-item">
+            <i class="fas fa-handshake"></i>
+            <span>Project Collaborations</span>
+          </div>
+          <div class="reason-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Workshop Requests</span>
+          </div>
+          <div class="reason-item">
+            <i class="fas fa-trophy"></i>
+            <span>Sponsorship Opportunities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Contact Form -->
+    <div class="contact-form-container">
+      <form class="modern-contact-form" id="contactForm" data-endpoint="http://localhost:5000/api/contact">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject" required>
+            <option value="">Select a subject</option>
+            <option value="membership">Membership Inquiry</option>
+            <option value="collaboration">Project Collaboration</option>
+            <option value="workshop">Workshop Request</option>
+            <option value="sponsorship">Sponsorship Opportunity</option>
+            <option value="general">General Question</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Tell us more about your inquiry..." required></textarea>
+        </div>
+        
+        <button type="submit" class="btn filled contact-submit-btn">
+          <i class="fas fa-paper-plane"></i>
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contact Information -->
+  <section class="testimonials">
+    <div class="section-header center">
+      <span class="section-subtitle">Reach Us</span>
+      <h2>Contact Information</h2>
+    </div>
+
+    <div class="contact-info-enhanced">
+      <div class="contact-method">
+        <div class="contact-icon-wrapper">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="contact-details">
+          <h3>Email Us</h3>
+          <p>yantrika@college.edu</p>
+          <a href="mailto:yantrika@college.edu" class="contact-action">Send Email</a>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-icon-wrapper">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div class="contact-details">
+          <h3>Call Us</h3>
+          <p>+91 98765 43210</p>
+          <a href="tel:+919876543210" class="contact-action">Call Now</a>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-icon-wrapper">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="contact-details">
+          <h3>Visit Us</h3>
+          <p>Engineering Department<br>College Campus, Room 204</p>
+          <a href="#" class="contact-action">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-icon-wrapper">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="contact-details">
+          <h3>Office Hours</h3>
+          <p>Monday - Friday<br>9:00 AM - 6:00 PM</p>
+          <span class="contact-action status-open">Currently Open</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media -->
+  <section class="portfolio">
+    <div class="section-header center">
+      <span class="section-subtitle">Follow</span>
+      <h2>Connect on Social Media</h2>
+    </div>
+
+    <div class="social-media-grid">
+      <a href="#" class="social-platform" target="_blank">
+        <div class="social-icon linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+        <div class="social-info">
+          <h3>LinkedIn</h3>
+          <p>Professional updates and networking</p>
+          <span class="social-handle">@YantrikaRobotics</span>
+        </div>
+      </a>
+
+      <a href="#" class="social-platform" target="_blank">
+        <div class="social-icon instagram">
+          <i class="fab fa-instagram"></i>
+        </div>
+        <div class="social-info">
+          <h3>Instagram</h3>
+          <p>Behind-the-scenes and project photos</p>
+          <span class="social-handle">@yantrika_robotics</span>
+        </div>
+      </a>
+
+      <a href="#" class="social-platform" target="_blank">
+        <div class="social-icon youtube">
+          <i class="fab fa-youtube"></i>
+        </div>
+        <div class="social-info">
+          <h3>YouTube</h3>
+          <p>Project demos and tutorials</p>
+          <span class="social-handle">Yantrika Robotics</span>
+        </div>
+      </a>
+
+      <a href="#" class="social-platform" target="_blank">
+        <div class="social-icon github">
+          <i class="fab fa-github"></i>
+        </div>
+        <div class="social-info">
+          <h3>GitHub</h3>
+          <p>Open source projects and code</p>
+          <span class="social-handle">@YantrikaRobotics</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <h2 class="footer-logo"><span class="dot"></span> YANTRIKA <span class="dot"></span></h2>
+        <p>Empowering the next generation of roboticists and innovators.</p>
+        <div class="subscribe">
+          <hr />
+          <a href="#join-form" class="subscribe-link"><span class="dot"></span> Join Our Club</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <p>Engineering Department<br>College Campus, Room 204</p>
+        <p>Email: yantrika@college.edu</p>
+        <p>Phone: +91 98765 43210</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

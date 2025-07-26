@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - Yantrika Robotics Club</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="Yan.png" alt="Yantrika Logo" />
+      <span><strong>YANTRIKA</strong></span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html"class="active">Gallery</a></li>
+        <!-- <li><a href="join.html">Join & Contact</a></li> -->
+        <li><a href="contact.html">Join & Contact</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html" class="start-btn"><i class="fas fa-rocket"></i> Join Now</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Our <span class="highlight">Gallery</span><span class="dot">.</span></h1>
+      <p>Explore our journey through images and videos showcasing our projects, events, and achievements.</p>
+    </div>
+  </section>
+
+  <!-- Gallery Filter -->
+  <section class="services">
+    <div class="section-header center">
+      <span class="section-subtitle">Memories</span>
+      <h2>Photo & Video Gallery</h2>
+    </div>
+
+    <div class="gallery-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="projects">Projects</button>
+      <button class="filter-btn" data-filter="events">Events</button>
+      <button class="filter-btn" data-filter="workshops">Workshops</button>
+      <button class="filter-btn" data-filter="competitions">Competitions</button>
+      <button class="filter-btn" data-filter="team">Team</button>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Project Images -->
+      <div class="gallery-item" data-category="projects">
+        <div class="gallery-overlay">
+          <h3>Autonomous Robot</h3>
+          <p>AI-powered navigation system</p>
+          <button class="view-btn" onclick="openGalleryModal('project1')">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Autonomous Robot" />
+      </div>
+
+      <div class="gallery-item video" data-category="projects">
+        <div class="gallery-overlay">
+          <h3>Robotic Arm Demo</h3>
+          <p>6-DOF precision control</p>
+          <button class="view-btn" onclick="openGalleryModal('video1')">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Robotic Arm" />
+        <div class="video-indicator">
+          <i class="fas fa-play-circle"></i>
+        </div>
+      </div>
+
+      <!-- Event Images -->
+      <div class="gallery-item" data-category="events">
+        <div class="gallery-overlay">
+          <h3>Tech Fest 2023</h3>
+          <p>Annual robotics exhibition</p>
+          <button class="view-btn" onclick="openGalleryModal('event1')">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Tech Fest" />
+      </div>
+
+      <div class="gallery-item" data-category="workshops">
+        <div class="gallery-overlay">
+          <h3>Arduino Workshop</h3>
+          <p>Hands-on learning session</p>
+          <button class="view-btn" onclick="openGalleryModal('workshop1')">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Arduino Workshop" />
+      </div>
+
+      <div class="gallery-item video" data-category="competitions">
+        <div class="gallery-overlay">
+          <h3>National Championship</h3>
+          <p>Competition highlights</p>
+          <button class="view-btn" onclick="openGalleryModal('video2')">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Competition" />
+        <div class="video-indicator">
+          <i class="fas fa-play-circle"></i>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="team">
+        <div class="gallery-overlay">
+          <h3>Team Building</h3>
+          <p>Annual team retreat</p>
+          <button class="view-btn" onclick="openGalleryModal('team1')">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Team Building" />
+      </div>
+
+      <div class="gallery-item" data-category="projects">
+        <div class="gallery-overlay">
+          <h3>Drone Swarm</h3>
+          <p>Multi-drone coordination</p>
+          <button class="view-btn" onclick="openGalleryModal('project2')">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Drone Swarm" />
+      </div>
+
+      <div class="gallery-item" data-category="events">
+        <div class="gallery-overlay">
+          <h3>Industry Seminar</h3>
+          <p>Expert guest lecture</p>
+          <button class="view-btn" onclick="openGalleryModal('event2')">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Industry Seminar" />
+      </div>
+
+      <div class="gallery-item" data-category="workshops">
+        <div class="gallery-overlay">
+          <h3>3D Printing Lab</h3>
+          <p>Prototyping workshop</p>
+          <button class="view-btn" onclick="openGalleryModal('workshop2')">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="3D Printing" />
+      </div>
+
+      <div class="gallery-item" data-category="team">
+        <div class="gallery-overlay">
+          <h3>Core Team 2024</h3>
+          <p>Leadership team photo</p>
+          <button class="view-btn" onclick="openGalleryModal('team2')">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Core Team" />
+      </div>
+
+      <div class="gallery-item video" data-category="projects">
+        <div class="gallery-overlay">
+          <h3>Humanoid Robot</h3>
+          <p>Bipedal walking demo</p>
+          <button class="view-btn" onclick="openGalleryModal('video3')">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Humanoid Robot" />
+        <div class="video-indicator">
+          <i class="fas fa-play-circle"></i>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="competitions">
+        <div class="gallery-overlay">
+          <h3>Award Ceremony</h3>
+          <p>Championship trophy</p>
+          <button class="view-btn" onclick="openGalleryModal('award1')">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+        <img src="/Yan.png" alt="Award Ceremony" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Modal -->
+  <div id="galleryModal" class="gallery-modal">
+    <div class="gallery-modal-content">
+      <span class="gallery-close" onclick="closeGalleryModal()">&times;</span>
+      <div class="gallery-modal-body">
+        <img id="modalImage" src="/placeholder.svg" alt="" />
+        <div class="gallery-modal-info">
+          <h3 id="modalTitle"></h3>
+          <p id="modalDescription"></p>
+        </div>
+      </div>
+      <div class="gallery-navigation">
+        <button class="gallery-nav-btn" onclick="previousImage()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="gallery-nav-btn" onclick="nextImage()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistics Section -->
+  <section class="testimonials">
+    <div class="section-header center">
+      <span class="section-subtitle">Numbers</span>
+      <h2>Gallery Statistics</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="event-icon">📸</div>
+        <h3>500+ Photos</h3>
+        <p>Capturing every moment of our robotics journey, from project development to competition victories.</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="event-icon">🎥</div>
+        <h3>50+ Videos</h3>
+        <p>Demonstrating our robots in action, workshop highlights, and event documentation.</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="event-icon">🏆</div>
+        <h3>25+ Events</h3>
+        <p>Documented workshops, competitions, seminars, and team activities throughout the years.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <h2 class="footer-logo"><span class="dot"></span> YANTRIKA <span class="dot"></span></h2>
+        <p>Empowering the next generation of roboticists and innovators.</p>
+        <div class="subscribe">
+          <hr />
+          <a href="contact.html" class="subscribe-link"><span class="dot"></span> Join Our Club</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <p>Engineering Department<br>College Campus, Room 204</p>
+        <p>Email: yantrika@college.edu</p>
+        <p>Phone: +91 98765 43210</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
