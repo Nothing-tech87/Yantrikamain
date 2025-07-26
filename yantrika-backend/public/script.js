@@ -16,8 +16,16 @@ const projectData = [
   // … other projects …
 ];
 
-// Configuration - Update this with your server URL
-const API_BASE_URL = 'https://yantrika-backend.onrender.com';
+// ====== API BASE URL CONFIGURATION ======
+// Set your Render backend URL here:
+const RENDER_BACKEND_URL = "https://your-backend.onrender.com"; // <-- CHANGE THIS to your actual Render backend URL
+
+// Dynamically determine API base URL
+const API_BASE_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : RENDER_BACKEND_URL;
+// ====== END API BASE URL CONFIGURATION ======
 
 // Modal helpers
 function openProjectDetailsModal(projectId) {

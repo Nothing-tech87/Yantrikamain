@@ -13,8 +13,17 @@ const nodemailer = require('nodemailer');
 
 const app = express();
 
+// ====== CORS CONFIGURATION ======
+const RENDER_FRONTEND_URL = "https://your-frontend.onrender.com"; // <-- CHANGE THIS to your actual Render frontend URL
+app.use(cors({
+  origin: [
+    'http://localhost:3000', // for local dev (adjust if needed)
+    RENDER_FRONTEND_URL
+  ]
+}));
+// ====== END CORS CONFIGURATION ======
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 // Serve static frontend files
