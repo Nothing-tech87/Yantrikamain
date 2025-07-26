@@ -17,7 +17,7 @@ const projectData = [
 ];
 
 // Configuration - Update this with your server URL
-const API_BASE_URL = 'http://localhost:5000'; // Change this to your server URL
+const API_BASE_URL = 'https://yantrika-backend.onrender.com';
 
 // Modal helpers
 function openProjectDetailsModal(projectId) {
@@ -598,3 +598,4 @@ function getInitials(name) {
     .join("")
     .toUpperCase();
 }
+
